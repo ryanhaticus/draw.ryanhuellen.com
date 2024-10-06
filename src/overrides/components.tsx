@@ -1,4 +1,5 @@
 import {
+	ArrowToolbarItem,
 	DefaultKeyboardShortcutsDialog,
 	DefaultToolbar,
 	DrawToolbarItem,
@@ -22,10 +23,11 @@ const ToolbarItems = () => {
 			<DrawToolbarItem />
 			<TextToolbarItem />
 			<EditorToolbarItem />
+			<ArrowToolbarItem />
 			<RectangleToolbarItem />
 			<OvalToolbarItem />
-			<EllipseToolbarItem />
 			<EraserToolbarItem />
+			<EllipseToolbarItem />
 			<LaserToolbarItem />
 		</>
 	);
