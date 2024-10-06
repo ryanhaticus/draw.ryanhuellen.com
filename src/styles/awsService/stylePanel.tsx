@@ -1,10 +1,11 @@
-import { useEditor, useRelevantStyles } from 'tldraw';
-import { AWSServiceStyle } from './style';
+import { useEditor, useIsDarkMode, useRelevantStyles } from 'tldraw';
 import { awsServices } from './constants';
+import { AWSServiceStyle } from './style';
 
 export const AWSServiceStylePanel = () => {
 	const styles = useRelevantStyles();
 	const editor = useEditor();
+	const isDarkMode = useIsDarkMode();
 
 	if (styles === null) {
 		return null;
@@ -29,6 +30,7 @@ export const AWSServiceStylePanel = () => {
 					backgroundColor: 'var(--color-hint)',
 					padding: 'var(--space-2)',
 					borderRadius: 'var(--radius-2)',
+					color: isDarkMode ? '#fff' : '#000',
 				}}
 				value={language.type === 'mixed' ? '' : language.value}
 				onChange={(e) => {

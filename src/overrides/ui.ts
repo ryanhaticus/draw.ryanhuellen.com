@@ -1,6 +1,6 @@
 import type { TLUiOverrides } from 'tldraw';
-import { buildEditorUIToolItem } from '../tools/editor/ui';
 import { buildAWSUIToolItem } from '../tools/aws/ui';
+import { buildEditorUIToolItem } from '../tools/editor/ui';
 
 export const ui: TLUiOverrides = {
 	tools(editor, tools) {

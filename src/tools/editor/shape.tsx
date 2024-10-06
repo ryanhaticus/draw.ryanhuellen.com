@@ -3,17 +3,17 @@ import {
 	FONT_FAMILIES,
 	HTMLContainer,
 	LABEL_FONT_SIZES,
-	stopEventPropagation,
 	type TLBaseShape,
+	stopEventPropagation,
 	useIsDarkMode,
 } from 'tldraw';
 
 import { type EditorProps, editorProps, name } from './constants';
 
 import CodeEditor from '@uiw/react-textarea-code-editor';
-import { updateShape } from '../../utils/updateShape';
-import { useIsEditingShape } from '../../hooks/useIsEditingShape';
 import { useEffect, useRef } from 'react';
+import { useIsEditingShape } from '../../hooks/useIsEditingShape';
+import { updateShape } from '../../utils/updateShape';
 
 type EditorShapeProps = TLBaseShape<name, EditorProps>;
 

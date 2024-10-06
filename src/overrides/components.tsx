@@ -14,8 +14,8 @@ import {
 	type TLComponents,
 	TextToolbarItem,
 } from 'tldraw';
-import { EditorToolbarItem } from '../tools/editor/ui';
 import { AWSToolbarItem } from '../tools/aws/ui';
+import { EditorToolbarItem } from '../tools/editor/ui';
 import { StylePanel } from './StylePanel';
 
 const ToolbarItems = () => {

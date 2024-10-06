@@ -3,8 +3,8 @@ import {
 	DefaultStylePanelContent,
 	useRelevantStyles,
 } from 'tldraw';
-import { LanguageStylePanel } from '../styles/language/stylePanel';
 import { AWSServiceStylePanel } from '../styles/awsService/stylePanel';
+import { LanguageStylePanel } from '../styles/language/stylePanel';
 
 export const StylePanel = () => {
 	const styles = useRelevantStyles();
