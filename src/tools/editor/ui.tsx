@@ -11,4 +11,4 @@ export const buildEditorUIToolItem = (editor: Editor): TLUiToolItem => ({
 	onSelect: () => editor.setCurrentTool(name),
 });
 
-export const EditorToolbarItem = () => useUIMenuItem('editor');
+export const EditorToolbarItem = () => useUIMenuItem(name);

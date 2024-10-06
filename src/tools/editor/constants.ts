@@ -4,6 +4,7 @@ import {
 	type RecordPropsType,
 	T,
 } from 'tldraw';
+import { LanguageStyle } from '../../styles/language/style';
 
 export const name = 'editor' as const;
 
@@ -15,6 +16,7 @@ export const editorProps = {
 	content: T.string,
 	size: DefaultSizeStyle,
 	font: DefaultFontStyle,
+	language: LanguageStyle,
 } as const;
 
 export type EditorProps = RecordPropsType<typeof editorProps>;

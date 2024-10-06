@@ -15,6 +15,8 @@ import {
 	TextToolbarItem,
 } from 'tldraw';
 import { EditorToolbarItem } from '../tools/editor/ui';
+import { AWSToolbarItem } from '../tools/aws/ui';
+import { StylePanel } from './StylePanel';
 
 const ToolbarItems = () => {
 	return (
@@ -26,8 +28,9 @@ const ToolbarItems = () => {
 			<EditorToolbarItem />
 			<ArrowToolbarItem />
 			<RectangleToolbarItem />
-			<OvalToolbarItem />
+			<AWSToolbarItem />
 			<EraserToolbarItem />
+			<OvalToolbarItem />
 			<EllipseToolbarItem />
 			<HighlightToolbarItem />
 			<LaserToolbarItem />
@@ -50,4 +53,5 @@ export const components: TLComponents = {
 			</DefaultKeyboardShortcutsDialog>
 		);
 	},
+	StylePanel: StylePanel,
 };

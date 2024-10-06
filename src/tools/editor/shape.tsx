@@ -3,6 +3,7 @@ import {
 	FONT_FAMILIES,
 	HTMLContainer,
 	LABEL_FONT_SIZES,
+	stopEventPropagation,
 	type TLBaseShape,
 	useIsDarkMode,
 } from 'tldraw';
@@ -10,14 +11,19 @@ import {
 import { type EditorProps, editorProps, name } from './constants';
 
 import CodeEditor from '@uiw/react-textarea-code-editor';
-import { isShapeSelected } from '../../utils/isShapeSelected';
 import { updateShape } from '../../utils/updateShape';
+import { useIsEditingShape } from '../../hooks/useIsEditingShape';
+import { useEffect, useRef } from 'react';
 
 type EditorShapeProps = TLBaseShape<name, EditorProps>;
 
 export class EditorShape extends BaseBoxShapeUtil<EditorShapeProps> {
 	static override type = name;
 	static override props = editorProps;
+
+	override canEdit() {
+		return true;
+	}
 
 	getDefaultProps(): EditorProps {
 		return {
@@ -26,31 +32,43 @@ export class EditorShape extends BaseBoxShapeUtil<EditorShapeProps> {
 			content: '',
 			size: 'm',
 			font: 'draw',
+			language: 'TypeScript',
 		};
 	}
 
 	component(shape: EditorShapeProps) {
 		const isDarkMode = useIsDarkMode();
+		const isEditingShape = useIsEditingShape(shape);
+		const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
-		const conditionallyStopPropagation = (e: React.SyntheticEvent) => {
-			if (!isShapeSelected(this.editor, shape)) {
+		useEffect(() => {
+			if (!isEditingShape) {
 				return;
 			}
 
-			e.stopPropagation();
-		};
+			setTimeout(() => {
+				if (!textAreaRef.current) {
+					return;
+				}
+
+				textAreaRef.current.focus();
+			}, 10);
+		}, [isEditingShape]);
 
 		return (
 			<HTMLContainer
+				id={shape.id}
+				onPointerDown={isEditingShape ? stopEventPropagation : undefined}
 				style={{
 					height: shape.props.h,
 					width: shape.props.w,
-					pointerEvents: 'all',
+					pointerEvents: isEditingShape ? 'all' : 'none',
 					overflow: 'hidden',
 				}}>
 				<CodeEditor
 					value={shape.props.content}
-					language='ts'
+					ref={textAreaRef}
+					language={shape.props.language.toLowerCase()}
 					data-color-mode={isDarkMode ? 'dark' : 'light'}
 					id={shape.id}
 					placeholder='// Write some code...'
@@ -63,19 +81,6 @@ export class EditorShape extends BaseBoxShapeUtil<EditorShapeProps> {
 					onChange={(e) =>
 						updateShape(this.editor, shape, { content: e.target.value })
 					}
-					onPointerDown={conditionallyStopPropagation}
-					onTouchStart={conditionallyStopPropagation}
-					onTouchEnd={conditionallyStopPropagation}
-					onKeyDown={(e) => {
-						const el = e.target as HTMLTextAreaElement;
-
-						el.style.height = 'inherit';
-						el.style.height = `${el.scrollHeight}px`;
-
-						if (el.scrollHeight > shape.props.h) {
-							updateShape(this.editor, shape, { h: el.scrollHeight });
-						}
-					}}
 				/>
 			</HTMLContainer>
 		);
