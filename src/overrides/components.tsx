@@ -3,12 +3,10 @@ import {
 	DefaultKeyboardShortcutsDialog,
 	DefaultToolbar,
 	DrawToolbarItem,
-	EllipseToolbarItem,
 	EraserToolbarItem,
 	HandToolbarItem,
 	HighlightToolbarItem,
 	LaserToolbarItem,
-	OvalToolbarItem,
 	RectangleToolbarItem,
 	SelectToolbarItem,
 	type TLComponents,
@@ -30,8 +28,6 @@ const ToolbarItems = () => {
 			<RectangleToolbarItem />
 			<AWSToolbarItem />
 			<EraserToolbarItem />
-			<OvalToolbarItem />
-			<EllipseToolbarItem />
 			<HighlightToolbarItem />
 			<LaserToolbarItem />
 		</>
