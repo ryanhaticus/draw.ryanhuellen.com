@@ -6,6 +6,7 @@ import {
 	EllipseToolbarItem,
 	EraserToolbarItem,
 	HandToolbarItem,
+	HighlightToolbarItem,
 	LaserToolbarItem,
 	OvalToolbarItem,
 	RectangleToolbarItem,
@@ -28,6 +29,7 @@ const ToolbarItems = () => {
 			<OvalToolbarItem />
 			<EraserToolbarItem />
 			<EllipseToolbarItem />
+			<HighlightToolbarItem />
 			<LaserToolbarItem />
 		</>
 	);
