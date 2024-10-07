@@ -7,7 +7,7 @@ export const buildAWSUIToolItem = (editor: Editor): TLUiToolItem => ({
 	id: name,
 	icon: 'aws',
 	label: 'AWS',
-	kbd: 'a',
+	kbd: 'w',
 	onSelect: () => editor.setCurrentTool(name),
 });
 
